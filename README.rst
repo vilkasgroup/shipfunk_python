@@ -33,7 +33,7 @@ Features
 * Package card and tracking code creation
 * User accounts handling
 
-.. include:: usage.rst
+.. include:: docs/usage.rst
 
 Credits
 ---------

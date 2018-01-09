@@ -6,15 +6,15 @@ Shipfunk
 .. image:: https://img.shields.io/pypi/v/shipfunk_python.svg
         :target: https://pypi.python.org/pypi/shipfunk_python
 
-.. image:: https://img.shields.io/travis/jhsaraja/shipfunk_python.svg
-        :target: https://travis-ci.org/jhsaraja/shipfunk_python
+.. image:: https://img.shields.io/travis/vilkasgroup/shipfunk_python.svg
+        :target: https://travis-ci.org/vilkasgroup/shipfunk_python
 
 .. image:: https://readthedocs.org/projects/shipfunk-python/badge/?version=latest
         :target: https://shipfunk-python.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/jhsaraja/shipfunk_python/shield.svg
-     :target: https://pyup.io/repos/github/jhsaraja/shipfunk_python/
+.. image:: https://pyup.io/repos/github/vilkasgroup/shipfunk_python/shield.svg
+     :target: https://pyup.io/repos/github/vilkasgroup/shipfunk_python/
      :alt: Updates
 
 

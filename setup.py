@@ -16,7 +16,7 @@ requirements = [
 ]
 
 setup_requirements = [
-    # TODO(jhsaraja): put setup requirements (distutils extensions, etc.) here
+    # TODO(vilkasgroup): put setup requirements (distutils extensions, etc.) here
 ]
 
 test_requirements = [
@@ -30,7 +30,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Jaana Sarajärvi",
     author_email='jaana.sarajarvi@vilkas.fi',
-    url='https://github.com/jhsaraja/shipfunk_python',
+    url='https://github.com/vilkasgroup/shipfunk_python',
     packages=find_packages(include=['shipfunk_python']),
     include_package_data=True,
     install_requires=requirements,

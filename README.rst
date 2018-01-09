@@ -17,6 +17,9 @@ Shipfunk
      :target: https://pyup.io/repos/github/vilkasgroup/shipfunk_python/
      :alt: Updates
 
+.. image:: https://coveralls.io/repos/github/vilkasgroup/testiprojekti/badge.svg?branch=master
+   :target: https://coveralls.io/github/vilkasgroup/testiprojekti?branch=master
+   :alt: Coveralls status
 
 Python module for Shipfunk API
 

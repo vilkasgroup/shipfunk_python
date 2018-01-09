@@ -2,6 +2,10 @@
 Usage
 =====
 
-To use Shipfunk in a project::
+There are two different ways to use this module
 
-    import shipfunk_python
+* Using class Shipfunk:
+    * Search pickup points
+    * Create package cards and tracking codes
+* Using class ShipfunkUser:
+    * Handle user accounts

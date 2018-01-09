@@ -28,7 +28,10 @@ Python module for Shipfunk API
 Features
 --------
 
-* TODO
+* Deliveries handling
+* Pickup point search
+* Package card and tracking code creation
+* User accounts handling
 
 Credits
 ---------

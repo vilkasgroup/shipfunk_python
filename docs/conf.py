@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# shipfunk_python documentation build configuration file, created by
-# sphinx-quickstart on Tue Jul  9 22:26:36 2013.
+# Shipfunk documentation build configuration file, created by
+# sphinx-quickstart on Thu Jan 11 08:50:44 2018.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -20,7 +20,7 @@ import os
 # directory, add these directories to sys.path here. If the directory is
 # relative to the documentation root, use os.path.abspath to make it
 # absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('shipfunk_python'))
 
 # Get the project root dir, which is the parent dir of this
 cwd = os.getcwd()
@@ -56,7 +56,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Shipfunk'
-copyright = u"2018, Jaana Sarajärvi"
+copyright = u"2018, Vilkas Group Oy"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout

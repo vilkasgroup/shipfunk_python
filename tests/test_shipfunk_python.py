@@ -6,12 +6,12 @@
 
 import unittest
 import logging
-import http.client
+#import http.client
 import os
 from shipfunk_python.shipfunk import Shipfunk
 
 # logging
-http.client.HTTPConnection.debuglevel = 1
+#http.client.HTTPConnection.debuglevel = 1
 logging.basicConfig()
 logging.getLogger().setLevel(logging.DEBUG)
 requests_log = logging.getLogger("requests.packages.urllib3")

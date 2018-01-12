@@ -25,7 +25,7 @@ class TestShipfunk(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """ Set up our Shipfunk client for tests. It requires the following environment variables: test_apikey """
-        cls._shipfunkClientUser = shipfunk.ShipfunkUser(os.environ.get('APIKEY_USERS'))
+        cls._shipfunkClientUser = ShipfunkUser(os.environ.get('APIKEY_USERS'))
         cls._email = os.environ.get('EMAIL')
 
     def test_001_create_user(self):

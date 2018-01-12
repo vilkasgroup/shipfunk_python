@@ -8,7 +8,7 @@ import unittest
 import logging
 import http.client
 import os
-from shipfunk_python import shipfunk_python
+from shipfunk_python.shipfunk import Shipfunk
 
 # logging
 http.client.HTTPConnection.debuglevel = 1

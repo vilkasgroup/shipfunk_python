@@ -1,8 +1,14 @@
-import shipfunk
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Tests for `shipfunk_python` package."""
+
+
 import unittest
 import logging
 import http.client
 import os
+from shipfunk_python.shipfunk import ShipfunkUser
 
 # logging
 http.client.HTTPConnection.debuglevel = 1

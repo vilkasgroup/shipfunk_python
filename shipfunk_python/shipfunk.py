@@ -4,7 +4,11 @@
 import requests
 import logging
 import json
-from urllib.parse import urlencode
+
+try:
+    from urllib.parse import urlencode
+except ImportError:
+    from urlparse import urlencode
 
 logs = logging.getLogger(__name__)
 

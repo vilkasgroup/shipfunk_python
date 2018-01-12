@@ -7,15 +7,9 @@
 import unittest
 import logging
 import os
-#try:
-#    import http.client
-#except ImportError:
- #   import httplib
-
 from shipfunk_python.shipfunk import ShipfunkUser
 
 # logging
-#http.client.HTTPConnection.debuglevel = 1
 logging.basicConfig()
 logging.getLogger().setLevel(logging.DEBUG)
 requests_log = logging.getLogger("requests.packages.urllib3")

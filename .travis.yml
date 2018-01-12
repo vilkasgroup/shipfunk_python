@@ -22,5 +22,5 @@ deploy:
     secure: PLEASE_REPLACE_ME
   on:
     tags: true
-    repo: jhsaraja/shipfunk_python
+    repo: vilkasgroup/shipfunk_python
     python: 2.7

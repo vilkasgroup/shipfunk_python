@@ -903,7 +903,7 @@ class ShipfunkUser(Shipfunk):
 
     def __init__(self, apikey):
         """ Initialize ShipfunkUser client. """
-        super('ShipfunkUser', self).__init__(apikey)
+        super(ShipfunkUser, self).__init__(apikey)
 
     @staticmethod
     def get_urlvariables():

@@ -15,7 +15,7 @@ except ImportError:
     import httplib as http_client
 
 # logging
-http.client.HTTPConnection.debuglevel = 1
+http_client.HTTPConnection.debuglevel = 1
 logging.basicConfig()
 logging.getLogger().setLevel(logging.DEBUG)
 requests_log = logging.getLogger("requests.packages.urllib3")

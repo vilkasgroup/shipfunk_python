@@ -8,7 +8,7 @@ import json
 try:
     from urllib.parse import urlencode
 except ImportError:
-    from urlparse import urlencode
+    from urllib import urlencode
 
 logs = logging.getLogger(__name__)
 

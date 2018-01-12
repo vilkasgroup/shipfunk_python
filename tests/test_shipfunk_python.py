@@ -34,29 +34,29 @@ class TestShipfunk_python(unittest.TestCase):
     def test_001_create_object_wrong_language(self):
         """ Test creating a new object with wrong language, so default language should be used """
         language = 'FI'
-        shipfunk_client = shipfunk.Shipfunk('test_apikey', '1234', 'suomi')
+        shipfunk_client = Shipfunk('test_apikey', '1234', 'suomi')
         self.assertEqual(shipfunk_client.language, language)
 
-        shipfunk_client = shipfunk.Shipfunk('test_apikey', '1234', 'f4')
+        shipfunk_client = Shipfunk('test_apikey', '1234', 'f4')
         self.assertEqual(shipfunk_client.language, language)
 
     def test_002_create_object_language_lower(self):
         """ Test creating a new object with language in lower case """
-        shipfunk_client = shipfunk.Shipfunk('test_apikey', '1234', 'en')
+        shipfunk_client = Shipfunk('test_apikey', '1234', 'en')
         self.assertEqual(shipfunk_client.language, 'EN')
 
     def test_003_create_object_wrong_currency(self):
         """ Test creating a new object with wrong currency, so default currency should be used """
         currency = 'EUR'
-        shipfunk_client = shipfunk.Shipfunk('test_apikey', '1234', 'fi', 'eurot')
+        shipfunk_client = Shipfunk('test_apikey', '1234', 'fi', 'eurot')
         self.assertEqual(shipfunk_client.currency, currency)
 
-        shipfunk_client = shipfunk.Shipfunk('test_apikey', '1234', 'fi', 'er5')
+        shipfunk_client = Shipfunk('test_apikey', '1234', 'fi', 'er5')
         self.assertEqual(shipfunk_client.currency, currency)
 
     def test_004_create_object_currency_lower(self):
         """ Test creating a new object with currency in lower case """
-        shipfunk_client = shipfunk.Shipfunk('test_apikey', '1234', 'fi', 'eur')
+        shipfunk_client = Shipfunk('test_apikey', '1234', 'fi', 'eur')
         self.assertEqual(shipfunk_client.currency, 'EUR')
 
     def test_005_endpoint(self):
@@ -499,7 +499,7 @@ class TestShipfunk_python(unittest.TestCase):
 
     def test_024_get_delivery_options(self):
         """ Test get_delivery_options without any data """
-        shipfunkclient2 = shipfunk.Shipfunk(os.environ.get('APIKEY'), '3456')
+        shipfunkclient2 = Shipfunk(os.environ.get('APIKEY'), '3456')
         with self.assertRaises(ValueError):
             shipfunkclient2.get_delivery_options()
 

@@ -17,7 +17,7 @@ Shipfunk
    :target: https://coveralls.io/github/vilkasgroup/shipfunk_python?branch=master
    :alt: Coveralls status
 
-Python module for Shipfunk API 
+Python module for Shipfunk API
 
 
 * Free software: MIT license

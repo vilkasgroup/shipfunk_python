@@ -55,6 +55,7 @@ class Shipfunk(object):
         """ Method saves a new endpoint if value is defined.
 
         :param value: new endpoint url, string
+
         :return: None
         """
         if not value:
@@ -75,6 +76,7 @@ class Shipfunk(object):
         """ Method saves a new API key if value is defined
 
         :param value: new API key, string
+
         :return: None
         """
         if not value:
@@ -95,6 +97,7 @@ class Shipfunk(object):
         """ Method saves a new language code if value is defined and it is in a correct format.
 
         :param value: new language code, in two letter 'ISO 639-1'-format
+
         :return: None
         """
         if not value:
@@ -121,6 +124,7 @@ class Shipfunk(object):
         """ Method saves a new currency code if value is defined and it is in a correct format.
 
         :param value: new currency code, with three letters
+
         :return: None
         """
         if not value:
@@ -148,6 +152,7 @@ class Shipfunk(object):
         """ Method saves a new order id.
 
         :param value: order id, string
+
         :return: None
         """
         if not value:
@@ -169,6 +174,7 @@ class Shipfunk(object):
         default language code is used.
 
         :param language: new language code, in two letter 'ISO 639-1'-format
+
         :return: language code, in two letter 'ISO 639-1'-format
         """
         if (not language) or (len(language) != 2) or (not language.isalpha()):
@@ -182,6 +188,7 @@ class Shipfunk(object):
         default currency code is used.
 
         :param currency: new currency code, with three letters
+
         :return: currency code, with three letters
         """
         if (not currency) or (len(currency) != 3) or (not currency.isalpha()):
@@ -202,8 +209,17 @@ class Shipfunk(object):
         :param dimensions: dimensions, dictionary
                - used keys are: unit, width, depth and height
         :param add_services: used additional services, dictionary
-               - used keys are: code, packing_group, quantity, quantity_unit, shipping_name,
-                 tunnel_restriction_code, un_code, warning_label_numbers
+
+               - used keys are:
+                   * code
+                   * packing_group
+                   * quantity
+                   * quantity_unit
+                   * shipping_name
+                   * tunnel_restriction_code
+                   * un_code
+                   * warning_label_numbers
+
         :return: added product, ShipfunkProduct
         """
         new_product = ShipfunkProduct(productno, weight, amount, weightunit, name, dimensions)
@@ -215,12 +231,20 @@ class Shipfunk(object):
         return new_product
 
     def add_address(self, **kwargs):
-        """ Method saves address data. If data is saved then that data is used when getting
+        """ Method saves customer's address data. If data is saved then that data is used when getting
         data from Shipfunk if parameters are not defined in method calls.
 
-        :param kwargs: data for address, dictionary
-               - used keys are: first_name, last_name, street_address, postal_code, city, country, postal_box, company,
-                 phone, email
+        :param first_name: first name, string, optional
+        :param last_name: last name, string, optional
+        :param street_address: street, string, optional
+        :param postal_code: postal code, string, optional
+        :param city: city, string, optional
+        :param country: country code, string, optional
+        :param postal_box: postal box, string, optional
+        :param company: company, string, optional
+        :param phone: phone, string, optional
+        :param email: email, string, optional
+
         :return: None
         """
         logs.debug("Data for address: " + str(kwargs))
@@ -234,8 +258,18 @@ class Shipfunk(object):
         """ Method returns data from address dictionary if it is saved to object.
 
         :param keyname: the key name of the returned data, string
-               - used keys are: first_name, last_name, street_address, postal_code, city, country, postal_box, company,
-                 phone, email
+               - used keys are:
+                   * first_name
+                   * last_name
+                   * street_address
+                   * postal_code
+                   * city
+                   * country
+                   * postal_box
+                   * company
+                   * phone
+                   * email
+
         :return: one value from address dictionary, string
         """
         if keyname in self._address:
@@ -275,8 +309,18 @@ class Shipfunk(object):
 
         :param address_keys: which customer data fields are wanted to return, dictionary
         :param params: request params, dictionary, optional
-               - used keys are: first_name, last_name, street_address, postal_code, city, country, postal_box, company,
-                 phone, email
+               - used keys are:
+                   * first_name
+                   * last_name
+                   * street_address
+                   * postal_code
+                   * city
+                   * country
+                   * postal_box
+                   * company
+                   * phone
+                   * email
+
         :return: customer data, dictionary
         """
         customer_data = {}
@@ -308,6 +352,7 @@ class Shipfunk(object):
         """ Method to check that card direction is valid value. Value can be 'send', 'return' or 'both'.
 
         :param direction: card direction, string
+
         :return: 1 if value is valid, boolean
         """
         valid_values = ('send', 'return', 'both')
@@ -324,8 +369,9 @@ class Shipfunk(object):
         If params are not defined, uses saved products and customers data.
 
         :param params: send values for request, dictionary, optional
-               - postal_code: customers postal code (optional)
-               - country: customers country (optional)
+
+               - postal_code: customer's postal code (optional)
+               - country: customer's country (optional)
                - products: (optional)
                    * weight: the weight of the product
                        - amount, unit (default is kg)
@@ -335,6 +381,7 @@ class Shipfunk(object):
                    * additional_services: used additional services (optional)
                        - code, packing_group, quantity, quantity_unit, shipping_name,
                          tunnel_restriction_code, un_code, warning_label_numbers
+
         :return: min and max prices, dictionary
         """
         if params and 'products' in params:
@@ -376,6 +423,7 @@ class Shipfunk(object):
         If params are not defined, uses saved data from object.
 
         :param params: send values for request, dictionary, optional
+
                - order: order information (optional)
                    * language: language for the texts in the delivery options (optional, default is FI)
                    * monetary: (optional)
@@ -400,6 +448,7 @@ class Shipfunk(object):
                    * first_name, last_name, street_address, postal_code, city, country,
                      postal_box, company, phone, email
                - value: total value of the order, float (optional, not needed of order key is defined)
+
         :return: delivery options, dictionary
         """
         if params and 'order' in params:
@@ -443,10 +492,12 @@ class Shipfunk(object):
         If all needed params are not defined, uses saved data from object.
 
         :param params: send values for request, dictionary
+
                - carriercode: Shipfunk's id for the transport company and its delivery option
                - postal_code: customers postal code (optional)
                - country: customers country (optional)
                - return_count: the amount of the pickup points that Shipfunk returns if possible (default is 20)
+
         :return: pick up points, dictionary
         """
         if params and 'return_count' in params:
@@ -484,6 +535,7 @@ class Shipfunk(object):
         They need this information in order to create the correct package cards.
 
         :param params: send values for request, dictionary
+
                - selected_option
                    * orderid: order id
                    * carriercode: Shipfunk's id for the transport company and it's delivery option
@@ -492,6 +544,7 @@ class Shipfunk(object):
                    * pickupid: tranport company's pickup points id (optional if no pickups)
                    * return_prices: this will tell the service to return the calculated_price and
                      the customers price as an answer. (optional)
+
         :return: prices for customer and for shop, if return_prices is 1;
                  otherwise OK message, dictionary
         """
@@ -516,9 +569,11 @@ class Shipfunk(object):
         The order status should be set 'placed' always when the customer finished the order.
 
         :param params: send values for request, dictionary
+
                - status: status of the order. Value can be 'placed' or 'cancelled'.
                - final_orderid: if you has used temporary order id before the order has been paid,
                  you need to give the real order id
+
         :return: code 1 and message 'OK', dictionary
         """
         valid_values = ('placed', 'cancelled')
@@ -553,10 +608,20 @@ class Shipfunk(object):
         fields are give a zero or an empty string, those fields will not be updated.
 
         :param params: send values for request, dictionary
+
                - return_cards: return the updated package cards or not
                - customer: customer information
-                   * first_name, last_name, street_address, postal_code, city, country,
-                     postal_box, company, phone, email
+                   * first_name
+                   * last_name
+                   * street_address
+                   * postal_code
+                   * city
+                   * country
+                   * postal_box
+                   * company
+                   * phone
+                   * email
+
         :return: card info if return_cards is 1; otherwise ok message, dictionary
         """
         data = {
@@ -581,6 +646,7 @@ class Shipfunk(object):
         get_delivery_options and send_selected_delivery.
 
         :param params: send values for request, dictionary
+
                - order: order information
                    * return_cards: if value is 1 then return the tracking codes and package cards in the return message,
                      (optional, default is 0)
@@ -599,10 +665,10 @@ class Shipfunk(object):
                    * parcels: you may give all the parcel information in this element or you can give only the product
                      codes for each parcel.
                        - for example: product_codes, tracking_codes, warehouse
-
                - customer: customer information (optional)
                    * first_name, last_name, street_address, postal_code, city, country,
                      postal_box, company, phone, email
+
         :return: parcels info if return_cards is 1; otherwise ok message, dictionary
         """
         address_keys = ('first_name', 'last_name', 'street_address', 'postal_code', 'city', 'country', 'postal_box',
@@ -630,8 +696,10 @@ class Shipfunk(object):
         method is not necessary to use. It is not recommended to create tracking codes unless you really need them.
 
         :param params: send values for request, dictionary
+
                - code_amount: amount of the tracking codes (optional, default is 1),
                - carriercode: Shipfunk's id for the transport company and it's delivery option (optional)
+
         :return: tracking codes, dictionary
         """
         carriercode = ''
@@ -670,9 +738,11 @@ class Shipfunk(object):
         only the cards of the defined tracking code will be returned.
 
         :param params: send values for request, dictionary
+
                - card_direction: direction of the card. Value can be 'send', 'return' or 'both'.
                - sendmail: value is 1: Shipfunk will send an notification email to the customer (optional, default is 0)
                - tracking_code: tracking code associated with the parcel (optional)
+
         :return: package cards, dictionary
         """
         self.check_card_direction(params['card_direction'])
@@ -705,7 +775,9 @@ class Shipfunk(object):
          only returns the tracking codes that are already created.
 
         :param params: send values for request, dictionary
+
                - direction: direction of the card. Value can be 'send', 'return' or 'both'
+
         :return: package cards, dictionary
         """
         self.check_card_direction(params['card_direction'])
@@ -732,9 +804,11 @@ class Shipfunk(object):
         """ Method gets the tracking events for the given tracking code and transport company.
 
         :param params: send values for request, dictionary
+
                - tracking_code: tracking code of the parcel
                - transport_company: name of the transport company (optional)
                - carriercode: carriercode of the transport company's delivery option (option)
+
         :return: tracking events, dictionary
         """
         data = {
@@ -777,6 +851,7 @@ class Shipfunk(object):
         and -1 if the field is a float or integer field.
 
         :param params: send values for request, dictionary
+
                - return_parcels: if value is 1 then all parcels for the order are returned (optional, defauls is 0)
                - parcels: parcel data
                    * id: identifying code of the parcel. Shipfunk generated the id and it can not be edited
@@ -790,6 +865,7 @@ class Shipfunk(object):
                    * monetary_value: monetary value of the parcel (optional)
                    * warehouse: the warehouse where this product resides (optional)
                    * fragile: "Fragile/Handle with care" -additional service, 1 = true, 0 = false (optional)
+
         :return: parcels info if return_parcels is 1; otherwise ok message, dictionary
         """
         data = {
@@ -817,12 +893,14 @@ class Shipfunk(object):
         You can remove parcels by giving the parcel codes or the tracking codes of the parcels.
 
         :param params: send values for request, dictionary
+
                - return_parcels: if value is 1 then all parcels for the order are returned (optional, defauls is 0)
                - remove_all_parcels: if value is 1 then all parcels are deleted (optional, default is 0)
                - parcels: parcel data
                    * id: identifying code of the parcel. Shipfunk generated the id and it can not be edited (optional)
                    * parcel_code: identifying code of the parcel generated by you (optional)
                    * tracking_code: tracking code for the parcel (optional)
+
         :return: parcels info if return_parcels is 1; otherwise ok message, dictionary
         """
         data = {
@@ -862,6 +940,7 @@ class Shipfunk(object):
         :param content: content which is sent to Shipfunk, dictionary
         :param call_params: params for url if default type is not used, string (optional)
         :param add_orderid: if 1 then order id is added to url, boolean (optional, default is 1)
+
         :return: response from rest server, dictionary
         """
         if not call_params:
@@ -917,6 +996,7 @@ class ShipfunkUser(Shipfunk):
         """ Method creates new user accounts into Shipfunk under your own account.
 
         :param params: send values for request, dictionary
+
                - user: user information
                    * email: email of the new user account
                    * locale: locale of the new user account in two letter ISO 639-1-format (optional, default is fi)
@@ -976,6 +1056,7 @@ class ShipfunkUser(Shipfunk):
         """ Method modifies the existing user.
 
         :param params: send values for request, dictionary
+
                - user: user information
                    * email: email of the new user account
                    * locale: locale of the new user account in two letter ISO 639-1-format (optional, default is fi)
@@ -1036,6 +1117,7 @@ class ShipfunkUser(Shipfunk):
         This method can be used if you tried to create a new user when the user already existed.
 
         :param params: send values for request, dictionary
+
                - email: email of the user account
 
         :return: code and message, dictionary
@@ -1104,6 +1186,7 @@ class ShipfunkProduct(object):
         """ Method saves the product number of the product.
 
         :param value: the weight of the product, float
+
         :return: None
         """
         if not value:
@@ -1125,6 +1208,7 @@ class ShipfunkProduct(object):
         """ Method saves the weight of the product.
 
         :param value: the weight of the product, float
+
         :return: None
         """
         self.check_value(value)
@@ -1144,6 +1228,7 @@ class ShipfunkProduct(object):
         """ Method saves the amount of the product.
 
         :param value: the amount of the product, float
+
         :return: None
         """
         self.check_value(value)
@@ -1155,6 +1240,7 @@ class ShipfunkProduct(object):
         """ Method returns dimensions.
 
         :return: dimensions, dictionary
+
                  - used keys are: unit, width, depth and height
         """
         return self._dimensions
@@ -1164,7 +1250,9 @@ class ShipfunkProduct(object):
         """ Method saves the amount of the product.
 
         :param values: dimensions of the product, dictionary
+
                - used keys are: unit, width, depth and height
+
         :return: None
         """
         self.check_dimensions(values)
@@ -1184,8 +1272,16 @@ class ShipfunkProduct(object):
         """ Method saves additional services for the product.
 
         :param services: additional services, dictionary
-               - used keys are: code, packing_group, quantity, quantity_unit, shipping_name,
-                 tunnel_restriction_code, un_code, warning_label_numbers
+               - used keys are:
+                   * code
+                   * packing_group
+                   * quantity
+                   * quantity_unit
+                   * shipping_name
+                   * tunnel_restriction_code
+                   * un_code
+                   * warning_label_numbers
+
         :return: None
         """
         if type(services) != list:
@@ -1210,6 +1306,7 @@ class ShipfunkProduct(object):
         """ Method saves the warehouse of the product.
 
         :param value: the warehouse of the product, string
+
         :return: None
         """
 
@@ -1220,6 +1317,7 @@ class ShipfunkProduct(object):
         """ Method checks that the value is valid. The value has to be bigger than 0 and a number
 
         :param value: value, type can be any
+
         :return: None
         """
         if type(value) != int and type(value) != float:
@@ -1233,7 +1331,9 @@ class ShipfunkProduct(object):
         """ Method checks that dimension values are valid. The value has to be bigger than 0 and a number
 
         :param dimensions: dimensions, dictionary
+
                - used keys are: unit, width, depth and height
+
         :return: None
         """
         valid_keys = ('unit', 'width', 'depth', 'height')
@@ -1277,8 +1377,16 @@ class ShipfunkProduct(object):
         """ Method saves a additional service to object.
 
         :param values: data of the additional service, dictionary
-               - used keys are: code, packing_group, quantity, quantity_unit, shipping_name,
-                 tunnel_restriction_code, un_code, warning_label_numbers
+               - used keys are:
+                   * code
+                   * packing_group
+                   * quantity
+                   * quantity_unit
+                   * shipping_name
+                   * tunnel_restriction_code
+                   * un_code
+                   * warning_label_numbers
+
         :return: None
         """
         self._additional_services.append(values)

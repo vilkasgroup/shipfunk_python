@@ -15,6 +15,7 @@ requests = "*"
 coverage = "*"
 sphinx = "*"
 sphinx-autobuild = "*"
+twine = "*"
 
 
 

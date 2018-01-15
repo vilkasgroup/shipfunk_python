@@ -14,6 +14,7 @@ Using Shipfunk class
 --------------------
 
 .. code-block:: python
+
     from shipfunk_python.shipfunk import Shipfunk
 
     # create object

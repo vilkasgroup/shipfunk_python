@@ -7,7 +7,7 @@ Shipfunk
         :target: https://pypi.python.org/pypi/shipfunk_python
 
 .. image:: https://img.shields.io/travis/vilkasgroup/shipfunk_python.svg
-        :target: https://travis-ci.com/vilkasgroup/shipfunk_python
+        :target: https://travis-ci.org/vilkasgroup/shipfunk_python
 
 .. image:: https://readthedocs.org/projects/shipfunk_python/badge/?version=latest
         :target: https://shipfunk_python.readthedocs.io/en/latest/?badge=latest

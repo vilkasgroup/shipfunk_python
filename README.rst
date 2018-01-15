@@ -13,10 +13,6 @@ Shipfunk
         :target: https://shipfunk_python.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/vilkasgroup/shipfunk_python/shield.svg
-     :target: https://pyup.io/repos/github/vilkasgroup/shipfunk_python/
-     :alt: Updates
-
 .. image:: https://coveralls.io/repos/github/vilkasgroup/shipfunk_python/badge.svg?branch=master
    :target: https://coveralls.io/github/vilkasgroup/shipfunk_python?branch=master
    :alt: Coveralls status

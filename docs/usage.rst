@@ -42,4 +42,33 @@ Using Shipfunk class
     }
 
     # Call method with parameters
-    prices = shipfunk_client._shipfunkClient.get_price(params)
+    prices = shipfunk_client.get_price(params)
+
+Using ShipfunkUser class
+--------------------
+
+.. code-block:: python
+
+    from shipfunk_python.shipfunk import ShipfunkUser
+
+    # create object
+    shipfunk_client = ShipfunkUser('your_apikey')
+
+    # Define parameters in dictionary
+    params = {
+        "user": {
+            "email": email@email.email,
+            "locale": "FI",
+            "eshop_name": "Example Store",
+            "business_id": "12312345",
+            "customs_id": "6543210",
+            "contact_person_name": "Test Tester",
+            "contact_person_phone": "040 1231234",
+            "contact_person_email": email@email.email,
+            "web_address": "real_deal.example.com",
+            "customer_contact_info": "<b>Contact us:</b> service@example.com"
+        }
+    }
+
+    # Call method with parameters
+    result = shipfunk_client.create_user(params)

@@ -8,6 +8,7 @@ name = "pypi"
 [packages]
 
 requests = "*"
+python-coveralls = "*"
 
 
 [dev-packages]
@@ -15,6 +16,9 @@ requests = "*"
 coverage = "*"
 sphinx = "*"
 sphinx-autobuild = "*"
+tox = "*"
+twine = "*"
+bumpversion = "*"
 
 
 

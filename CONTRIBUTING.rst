@@ -110,5 +110,25 @@ Tips
 
 To run a subset of tests::
 
-
     $ python -m unittest tests.test_shipfunk_python
+
+
+Releasing new version
+---------------------
+
+When you are ready to release a new version follow these steps:
+
+1. Merge all changes that should be included in the new release to master.
+   And checkout master.
+2. Update HISTORY.rst with the new version number and changes. And commit your
+   changes to master.
+3. run::
+
+    $ bumpversion patch|minor|major
+
+4. push to master with tags to trigger travis deploy::
+
+    $ git push --tags
+    $ git push
+
+Travis will build the tag and when it is successfull will also deploy to pypi

@@ -279,7 +279,6 @@ class TestShipfunk_python(unittest.TestCase):
 
         data = product.get_data()
         self.assertIsNotNone(data["additional_services"])
-        print("Product data " + str(data))
 
         new_product = self._shipfunkClient.add_product(alias, weight, amount, name, weight_unit, dimensions, services)
         self.assertEqual(len(new_product.additional_services), 2)
@@ -453,14 +452,12 @@ class TestShipfunk_python(unittest.TestCase):
             }
         }
         deliveryoptions = self._shipfunkClient.get_delivery_options(params)
-        print(deliveryoptions)
         self.assertIsNotNone(deliveryoptions)
 
         params = {
             'value': 12
         }
         deliveryoptions = self._shipfunkClient.get_delivery_options(params)
-        print(deliveryoptions)
         self.assertIsNotNone(deliveryoptions)
 
     def test_022_get_customer_address(self):
@@ -481,13 +478,10 @@ class TestShipfunk_python(unittest.TestCase):
         }
         address_keys = 'postal_code'
         customer_address = self._shipfunkClient.get_customer_address_data(address_keys, params)
-        print(customer_address)
         self.assertIsNotNone(customer_address['postal_code'])
         self.assertEqual(customer_address['postal_code'], params['customer']['postal_code'])
 
         customer_address = self._shipfunkClient.get_customer_address_data(address_keys)
-        print(customer_address)
-        print(params['customer'])
         with self.assertRaises(KeyError):
             self.assertIsNone(customer_address['first_name'])
         self.assertNotEqual(customer_address['postal_code'], params['customer']['postal_code'])
@@ -498,7 +492,6 @@ class TestShipfunk_python(unittest.TestCase):
                                          street_address='Test Street')
 
         deliveryoptions = self._shipfunkClient.get_delivery_options()
-        print(deliveryoptions)
         self.assertIsNotNone(deliveryoptions)
 
     def test_024_get_delivery_options(self):
@@ -516,7 +509,6 @@ class TestShipfunk_python(unittest.TestCase):
             'return_count': 6
         }
         pickupoffices = self._shipfunkClient.get_pickups(params)
-        print(pickupoffices)
         self.assertIsNotNone(pickupoffices)
 
     def test_026_get_pickups(self):
@@ -525,7 +517,6 @@ class TestShipfunk_python(unittest.TestCase):
             'carriercode': '02000201',
         }
         pickupoffices = self._shipfunkClient.get_pickups(params)
-        print(pickupoffices)
         self.assertIsNotNone(pickupoffices)
 
     def test_027_send_selected_deliver(self):
@@ -540,7 +531,6 @@ class TestShipfunk_python(unittest.TestCase):
             }
         }
         prices = self._shipfunkClient.send_selected_delivery(params)
-        print(prices)
         self.assertIsNotNone(prices['customers_price'] and prices['calculated_price'])
 
     def test_028_set_order_status(self):
@@ -550,7 +540,6 @@ class TestShipfunk_python(unittest.TestCase):
             "final_orderid": "2345"
         }
         result = self._shipfunkClient.set_order_status(params)
-        print(result)
         self.assertEqual(result['Message'], 'OK')
 
     def test_029_set_order_status(self):
@@ -580,7 +569,6 @@ class TestShipfunk_python(unittest.TestCase):
             }
         }
         result = self._shipfunkClient.set_customer_details(params)
-        print(result)
         self.assertEqual(result['Message'], 'OK')
 
     def test_031_create_new_package_cards(self):
@@ -637,7 +625,6 @@ class TestShipfunk_python(unittest.TestCase):
             }
         }
         result = self._shipfunkClient.create_new_package_cards(params)
-        print(result)
         self.assertIsNotNone(result['orderid'])
 
     def test_032_create_new_package_cards(self):
@@ -681,7 +668,6 @@ class TestShipfunk_python(unittest.TestCase):
             }
         }
         result = self._shipfunkClient.create_new_package_cards(params)
-        print(result)
         self.assertIsNotNone(result['orderid'])
 
     def test_033_create_new_tracking_codes(self):
@@ -690,14 +676,12 @@ class TestShipfunk_python(unittest.TestCase):
             "code_amount": "2"
         }
         result = self._shipfunkClient.create_new_tracking_codes(params)
-        print(result)
         self.assertIsNotNone(result['tracking_codes'])
 
         params = {
             "carriercode": "02000201"
         }
         result = self._shipfunkClient.create_new_tracking_codes(params)
-        print(result)
         self.assertIsNotNone(result['tracking_codes'])
 
     def test_034_get_package_cards(self):
@@ -712,7 +696,6 @@ class TestShipfunk_python(unittest.TestCase):
             "card_direction": "both",
         }
         result = self._shipfunkClient.get_package_cards(params)
-        print(result)
         self.assertIsNotNone(result['orderid'])
         self.assertIsNotNone(result['parcel'])
 
@@ -742,7 +725,6 @@ class TestShipfunk_python(unittest.TestCase):
         }
         with self.assertRaises(ValueError):
             result = self._shipfunkClient.get_tracking_codes(params)
-            print(result)
 
     def test_036_get_tracking_events(self):
         """ Test get_tracking_events that tracking events are returned """
@@ -763,7 +745,6 @@ class TestShipfunk_python(unittest.TestCase):
     def test_037_get_parcels(self):
         """ Test get_parcels that parcels are returned """
         result = self._shipfunkClient.get_parcels()
-        print(result)
         self.assertIsNotNone(result['parcels'])
 
     def test_038_edit_parcels(self):
@@ -792,7 +773,6 @@ class TestShipfunk_python(unittest.TestCase):
             ]
         }
         result = self._shipfunkClient.edit_parcels(params)
-        print(result)
         self.assertIsNotNone(result['parcels'])
 
     def test_039_remove_parcels(self):
@@ -808,21 +788,18 @@ class TestShipfunk_python(unittest.TestCase):
             ]
         }
         result = self._shipfunkClient.delete_parcels(params)
-        print(result)
         self.assertIsNotNone(result['parcels'])
 
         params = {
             "remove_all_parcels": 1
         }
         result = self._shipfunkClient.delete_parcels(params)
-        print(result)
         self.assertIsNotNone(result['Code'])
         self.assertIsNotNone(result['Message'])
 
     def test_040_test_orderid(self):
         """ Test test_orderid that order id is checked """
         result = self._shipfunkClient.test_orderid()
-        print(result)
         self.assertIsNotNone(result['Code'])
         self.assertIsNotNone(result['Message'])
 
@@ -900,7 +877,6 @@ class TestShipfunk_python(unittest.TestCase):
             "height": 4
         }
         product.dimensions = dimensions
-        print("Dimensions " + str(product.dimensions))
         self.assertEqual(product.dimensions['unit'], dimensions['unit'])
 
         dimensions['depth'] = 0
@@ -920,7 +896,6 @@ class TestShipfunk_python(unittest.TestCase):
             product.dimensions = dimensions
 
         dimensions['unit'] = "testi"
-        print("Dimensions " + str(product.dimensions))
         self.assertNotEqual(product.dimensions['unit'], dimensions['unit'])
 
         dimensions = {

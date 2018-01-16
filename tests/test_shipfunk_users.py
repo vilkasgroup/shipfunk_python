@@ -51,7 +51,6 @@ class TestShipfunk(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             result = self._shipfunkClientUser.create_user(params)
-            print(result)
 
     def test_002_create_user(self):
         """ Test get_user that user data is returned """
@@ -60,7 +59,6 @@ class TestShipfunk(unittest.TestCase):
         }
         with self.assertRaises(ValueError):
             result = self._shipfunkClientUser.get_user(params)
-            print(result)
 
     def test_003_edit_user(self):
         """ Test edit_user that user data is changed """
@@ -80,7 +78,6 @@ class TestShipfunk(unittest.TestCase):
         }
         with self.assertRaises(ValueError):
             result = self._shipfunkClientUser.edit_user(params)
-            print(result)
 
     def test_004_detach_user(self):
         """ Test detach_user that user data is detached from your account """
@@ -88,7 +85,6 @@ class TestShipfunk(unittest.TestCase):
             "email": self._email,
         }
         result = self._shipfunkClientUser.detach_user(params)
-        print(result)
         self.assertIsNotNone(result['Code'])
         self.assertIsNotNone(result['Message'])
 
@@ -99,7 +95,6 @@ class TestShipfunk(unittest.TestCase):
         }
         with self.assertRaises(ValueError):
             result = self._shipfunkClientUser.create_invitation(params)
-            print(result)
 
 
 if __name__ == '__main__':

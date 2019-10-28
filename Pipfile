@@ -1,27 +1,19 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
-requests = "*"
+requests = ">=2.20.0"
 python-coveralls = "*"
 
-
 [dev-packages]
-
 coverage = "*"
-sphinx = "*"
+Sphinx = "*"
 sphinx-autobuild = "*"
 tox = "*"
 twine = "*"
 bumpversion = "*"
 
-
-
 [requires]
-
 python_version = "3.6"

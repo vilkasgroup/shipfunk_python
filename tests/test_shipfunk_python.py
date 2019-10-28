@@ -355,7 +355,7 @@ class TestShipfunk_python(unittest.TestCase):
 
     def test_020_set_orderid(self):
         """ Test saving a new order id """
-        neworderid = '2345'
+        neworderid = '23456'
         self._shipfunkClient.orderid = neworderid
         self.assertTrue(self._shipfunkClient.orderid == neworderid)
 
@@ -537,7 +537,7 @@ class TestShipfunk_python(unittest.TestCase):
         """ Test set_order_status """
         params = {
             "status": "placed",
-            "final_orderid": "2345"
+            "final_orderid": "23456"
         }
         result = self._shipfunkClient.set_order_status(params)
         self.assertEqual(result['Message'], 'OK')
@@ -546,7 +546,7 @@ class TestShipfunk_python(unittest.TestCase):
         """ Test set_order_status with wrong status """
         params = {
             "status": "test_status",
-            "final_orderid": "2345"
+            "final_orderid": "23456"
         }
         with self.assertRaises(ValueError):
             self._shipfunkClient.set_order_status(params)
@@ -569,7 +569,7 @@ class TestShipfunk_python(unittest.TestCase):
             }
         }
         result = self._shipfunkClient.set_customer_details(params)
-        self.assertEqual(result['Message'], 'OK')
+        self.assertIsNotNone(result['parcels'])
 
     def test_031_create_new_package_cards(self):
         """ Test create_new_package_cards """
@@ -600,9 +600,13 @@ class TestShipfunk_python(unittest.TestCase):
                 ],
                 "parcels": [
                     {
-                        "product_codes": [
-                            "B53756b6174"
-                        ],
+                        #"product_codes": [
+                        #    "B53756b6174"
+                        #],
+                        "weight": {
+                            "unit": "kg",
+                            "amount": 0.1
+                        },
                         "tracking_codes": {
                             "send": "JJFI12340000000000004",
                             "return": "JJFI12340000000000005"
@@ -656,9 +660,13 @@ class TestShipfunk_python(unittest.TestCase):
                 ],
                 "parcels": [
                     {
-                        "product_codes": [
-                            "B53756b6174"
-                        ],
+                        #"product_codes": [
+                        #    "B53756b6174"
+                        #],
+                        "weight": {
+                            "unit": "kg",
+                            "amount": 0.1
+                        },
                         "tracking_codes": {
                             "send": "JJFI12340000000000004",
                             "return": "JJFI12340000000000005"
@@ -711,6 +719,8 @@ class TestShipfunk_python(unittest.TestCase):
             "sendmail": 0
         }
         self._shipfunkClient.get_package_cards(params)
+        self.assertIsNotNone(result['orderid'])
+        self.assertIsNotNone(result['parcel'])
 
     def test_035_get_tracking_codes(self):
         """ Test get_tracking_codes that tracking codes are returned """
@@ -723,8 +733,8 @@ class TestShipfunk_python(unittest.TestCase):
         params = {
             "card_direction": "send",
         }
-        with self.assertRaises(ValueError):
-            result = self._shipfunkClient.get_tracking_codes(params)
+        result = self._shipfunkClient.get_tracking_codes(params)
+        self.assertIsNotNone(result['parcel'])
 
     def test_036_get_tracking_events(self):
         """ Test get_tracking_events that tracking events are returned """

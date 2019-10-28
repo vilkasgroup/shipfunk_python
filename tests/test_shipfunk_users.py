@@ -84,17 +84,17 @@ class TestShipfunk(unittest.TestCase):
         params = {
             "email": self._email,
         }
-        result = self._shipfunkClientUser.detach_user(params)
-        self.assertIsNotNone(result['Code'])
-        self.assertIsNotNone(result['Message'])
+        with self.assertRaises(ValueError):
+            result = self._shipfunkClientUser.detach_user(params)
 
     def test_005_create_invitation(self):
         """ Test create_invitation that invitation is sent to existing user """
         params = {
             "email": self._email,
         }
-        with self.assertRaises(ValueError):
-            result = self._shipfunkClientUser.create_invitation(params)
+        result = self._shipfunkClientUser.create_invitation(params)        
+        self.assertIsNotNone(result['Code'])
+        self.assertIsNotNone(result['Message'])
 
 
 if __name__ == '__main__':

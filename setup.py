@@ -25,7 +25,7 @@ test_requirements = [
 
 setup(
     name='shipfunk_python',
-    version='0.1.0',
+    version='0.1.1',
     description="Python module for Shipfunk API",
     long_description=readme + '\n\n' + history,
     author="Jaana Sarajärvi",

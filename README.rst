@@ -3,6 +3,10 @@ Shipfunk
 ========
 
 
+Shipfunk service has ended and this repository is archived for history
+=======
+
+
 .. image:: https://img.shields.io/pypi/v/shipfunk_python.svg
         :target: https://pypi.python.org/pypi/shipfunk_python
 
@@ -30,7 +34,7 @@ Features
 * Deliveries handling
 * Pickup point search
 * Package card and tracking code creation
-* User accounts handling 
+* User accounts handling
 
 
 Credits
@@ -40,4 +44,3 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-
